@@ -1,11 +1,5 @@
 import Vue from 'vue';
-
 import 'mini.css';
-
-// new Vue({
-//   el: '#app',
-//   render: h => h(App)
-// });
 
 import Home from './components/Home.vue'
 import NotFound from './components/NotFound.vue'

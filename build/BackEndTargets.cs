@@ -8,6 +8,8 @@ using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 using Build.Configuration;
+using Nuke.Common.Tooling;
+using Nuke.Common.Tools.DotNet;
 
 namespace Build
 {
@@ -16,7 +18,7 @@ namespace Build
         Target CustomerSpreadCalculatorTest => _ => _
                 .Executes(() => 
                 {
-                    //DotNetTest("lambda deploy-function CustomerSpreadCalculator", CustomerSpreadCalculatorFolder);                
+                    DotNetTest(s => s.SetProjectFile(FolderSettings.CustomerSpreadCalculatorTestsProject));
                 });
 
         Target DeployCustomerSpreadCalculator => _ => _

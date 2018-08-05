@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Amazon.Lambda.Core;
+using CustomerSpreadCalculator.Models;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
@@ -19,9 +20,16 @@ namespace CustomerSpreadCalculator
         /// <param name="input"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public string FunctionHandler(string input, ILambdaContext context)
+        public string FunctionHandler(InputModel input, ILambdaContext context)
         {
-            return input?.ToUpper() + "updated";
+            if (input.WorkStart < input.BusiestHour && input.BusiestHour < input.WorkEnd)
+            {
+                return "All good!";    
+            }
+            else
+            {
+                return "Bad timing";
+            }            
         }
     }
 }

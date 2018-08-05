@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/backend/CustomerSpreadCalculator/test/CustomerSpreadCalculator.Tests/bin/Debug/netcoreapp2.1/CustomerSpreadCalculator.Tests.dll",
+            "program": "${workspaceFolder}/backend/test/CustomerSpreadCalculator.Tests/bin/Debug/netcoreapp2.1/CustomerSpreadCalculator.Tests.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/backend/CustomerSpreadCalculator/test/CustomerSpreadCalculator.Tests",
+            "cwd": "${workspaceFolder}/backend/test/CustomerSpreadCalculator.Tests",
             // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
             "console": "internalConsole",
             "stopAtEntry": false,
