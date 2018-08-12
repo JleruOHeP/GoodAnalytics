@@ -1,7 +1,4 @@
 <template>  
-  <div>
-    <shared-header />
-
     <div class="container">      
       <div class="row">
         <h3>Hello!</h3>
@@ -19,7 +16,7 @@
           </p>
         </div>
       </div>
-      <div class="row">
+      <div class="row" id="subscribe-section">
         <div class="col-sm-12">
             <div v-if="!successfulSubmission">
                 <p>If you want to know more or to keep  updated about the progress, please subscribe:</p>
@@ -32,16 +29,13 @@
       </div>
     
     </div>    
-  </div>
 </template>
 
 <script>
 const axios = require('axios');
 
-import SharedHeader from './shared/SharedHeader.vue'
-
 export default {
-  name: 'Home',
+  name: 'HomeContent',
   data() {
     return {
       mail: "",
@@ -57,9 +51,6 @@ export default {
             alert('nope');
         }        
       }
-  },
-  components: {
-    SharedHeader
   }
 };
 

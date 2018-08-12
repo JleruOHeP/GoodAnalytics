@@ -1,7 +1,8 @@
 import Vue from 'vue';
-import 'mini.css';
+// import 'mini.css';
+import './styles/flavors/mini-nord.scss';
 
-import Home from './components/Home.vue'
+import Home from './components/home/Home.vue'
 import NotFound from './components/NotFound.vue'
 
   const routes = {
