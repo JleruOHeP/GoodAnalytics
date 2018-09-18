@@ -21,7 +21,7 @@ namespace CustomerSpreadCalculator.Calculators
             //coefficients
             var k = (2 * input.AverageCustomersPerDay) / (busiestHour * end);            
             var b = 1.0;
-            for (int i = 0; i <= busiestHour; i++)
+            for (int i = start; i <= busiestHour; i++)
             {
                 var weight = k * i + b; // minimum weight is 0
                 result.Add(weight);

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Amazon.Lambda.Core;
+using CustomerSpreadCalculator.Calculators;
 using CustomerSpreadCalculator.Models;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
@@ -20,16 +21,25 @@ namespace CustomerSpreadCalculator
         /// <param name="input"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public string FunctionHandler(InputModel input, ILambdaContext context)
+        public object FunctionHandler(InputModel input, ILambdaContext context)
         {
-            if (input.WorkStart < input.BusiestHour && input.BusiestHour < input.WorkEnd)
+            if (input == null)
             {
-                return "All good!";    
+                return new List<int> {42};
             }
-            else
+
+            if (input.WorkStart > input.BusiestHour || input.BusiestHour > input.WorkEnd)
             {
-                return "Bad timing";
-            }            
+                return new List<int>();
+            }
+
+            var weightCalculator = new WeightCalculator();
+            var spreadCalculator = new SpreadCalculator();
+
+            var weights = weightCalculator.Calculate(input);
+            var spread = spreadCalculator.Calculate(input, weights);
+
+            return spread;
         }
     }
 }

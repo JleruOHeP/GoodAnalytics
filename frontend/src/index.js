@@ -1,23 +1,14 @@
 import Vue from 'vue';
+import routing from './routing/route';
 // import 'mini.css';
 import './styles/flavors/mini-nord.scss';
 
-import Home from './components/home/Home.vue'
-import NotFound from './components/NotFound.vue'
-
-  const routes = {
-    '/': Home
-  }
-
-  new Vue({
+const app = new Vue({
     el: '#app',
-    data: {
-      currentRoute: window.location.pathname
+    data: {      
+      currentComponent: routing.currentComponent
     },
-    computed: {
-      ViewComponent () {
-        return routes[this.currentRoute] || NotFound
-      }
-    },
-    render (h) { return h(this.ViewComponent) }
-  })
+    render (h) { return h(this.currentComponent) }
+});
+
+routing.subscribe(() => app.currentComponent = routing.currentComponent);
