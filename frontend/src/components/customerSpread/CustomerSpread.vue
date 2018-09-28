@@ -2,11 +2,19 @@
   <div>
     <shared-header />
 
-    <div class="container">      
+    <div class="container" v-if="!calculated">
       <div class="row">
-        <user-form v-if="!calculated" @submitted="onFormSubmitted"/>
-        <chart-content v-if="calculated" :data=calculationResult :labels=labels />
-      </div>      
+        <user-form @submitted="onFormSubmitted"/>
+      </div>
+    </div>
+
+    <div class="container" v-if="calculated">
+      <div class="row">
+        <chart-content :data=calculationResult :labels=labels />
+      </div>
+      <div class="row">
+        <button type="button" @click="resetForm">Reset</button> 
+      </div>
     </div>
   </div>
 </template>
@@ -29,16 +37,21 @@ export default {
   },
   methods: {
     onFormSubmitted (value) {
-      var that = this;
+      this.labels = [];
       for (var i = value.WorkStart; i < value.WorkEnd; i += 0.5)
       {
         this.labels.push(i);
       }
+
+      var that = this;
       postToApi(value)
         .then(function(result) {
           that.calculationResult = result;
           that.calculated = true;
       });
+    },
+    resetForm (){
+      this.calculated = false;
     }
   },
   components: {

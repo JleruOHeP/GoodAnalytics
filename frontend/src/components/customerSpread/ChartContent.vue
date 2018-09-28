@@ -15,7 +15,7 @@ export default {
       labels: this.labels,
       datasets: [
         {
-          label: this.name,
+          label: 'Number of customers',
           backgroundColor: '#f87979',
           data: this.data
         }
