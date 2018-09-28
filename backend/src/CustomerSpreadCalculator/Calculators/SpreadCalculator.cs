@@ -16,16 +16,14 @@ namespace CustomerSpreadCalculator.Calculators
             var spike = input.BusiestHour - input.WorkStart;
             var end = input.WorkEnd - input.WorkStart;
             
-            //duplicating weights for each interval
-            var weights = hourlyWeights.SelectMany(t =>
-                Enumerable.Repeat(t, 2)).ToList();
-
             var random = new Random();
             for (double currentTime = start; currentTime < end; currentTime = currentTime + 0.5)
             {
                 var probability = CalculateNormalDistribution(currentTime, spike);
-                var randomValue = random.NextDouble();
-                var customers = randomValue < probability ? (int)weights[(int)currentTime] : 0;
+                var randomValue = random.NextDouble();                
+                //round down the current time to match the hourlyWeights distribution.
+                var matchingWeightIndex = (int)currentTime;
+                var customers = randomValue < probability ? (int)hourlyWeights[matchingWeightIndex] : 0;
                 result.Add(customers);
             }
 
