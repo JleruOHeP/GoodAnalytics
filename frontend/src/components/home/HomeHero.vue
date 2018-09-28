@@ -7,7 +7,9 @@
 
               <div class="row">
                 <div class="col-sm-4 col-sm-offset-4"> 
-                  <h2> Good analytics</h2>
+                  <!-- <h2> Good analytics</h2> -->
+                  <!-- <img :src="logo" /> -->
+                  <img src="https://s3-ap-southeast-2.amazonaws.com/good-analytics/assets/1.png" />
                 </div>
               </div>
 
