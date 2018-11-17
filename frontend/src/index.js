@@ -1,7 +1,5 @@
 import Vue from 'vue';
 import routing from './routing/route';
-// import 'mini.css';
-import './styles/flavors/mini-nord.scss';
 
 const app = new Vue({
     el: '#app',

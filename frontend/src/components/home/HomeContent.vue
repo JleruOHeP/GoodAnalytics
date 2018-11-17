@@ -1,8 +1,12 @@
-<template>  
-    <div class="container">      
+<template>
+  <div>
+
+    <div class="container">
+
       <div class="row">
         <h3>Hello!</h3>
       </div>
+
       <div class="row">
         <div class="col-sm-12">
           <p>This is going to be a web-app that will help small businesses with analytics.</p>
@@ -16,62 +20,52 @@
           </p>
         </div>
       </div>
-      <div class="row" id="subscribe-section">
-        <div class="col-sm-12">
-            <div v-if="!successfulSubmission">
-                <p>If you want to know more or to keep  updated about the progress, please subscribe:</p>
-                <input type="email" v-model="mail" placeholder="Add email for subscription"/> <button v-on:click="addEmail">Save!</button>
-            </div>    
-            <div v-if="successfulSubmission">
-                <p>Thank you for the subscription! We will be in touch shortly.</p>
-            </div>
+
+    </div>
+
+    <hr>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+            <h5>Example 1</h5>
+            <p>To run advertisement compaing or not? What is the expected outcome, price, timeframes?</p>
+        </div>
+        <div class="col-sm-6">
+            <img src="https://s3-ap-southeast-2.amazonaws.com/good-analytics/assets/ad-campaign.jpg" />
         </div>
       </div>
-    
-    </div>    
+    </div>
+
+    <hr>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+            <img src="https://s3-ap-southeast-2.amazonaws.com/good-analytics/assets/fish-chips.JPG" />
+        </div>
+        <div class="col-sm-6">
+          <h5>Example 2</h5>
+          <p>As a fish and chips shop - if you would update your storefront with a zomato reference, will it help to drive more customers?</p>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+  </div>
 </template>
 
 <script>
-const axios = require('axios');
-
 export default {
-  name: 'HomeContent',
-  data() {
-    return {
-      mail: "",
-      successfulSubmission: false
-    };
-  },
-  methods: {
-      addEmail : function(){
-        if (validateEmail(this.mail)) {
-            this.successfulSubmission = postToApi(this.mail);
-        }
-        else {
-            alert('nope');
-        }        
-      }
-  }
+  name: 'HomeContent'
 };
-
-function validateEmail(email) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-};
-
-function postToApi(email) {
-    var baseUrl = 'https://yobcnyc7ja.execute-api.ap-southeast-2.amazonaws.com/default/expressionOfInterest';
-    var query = baseUrl + '?mail=' + email;
-
-    var success = true;
-    axios.post(query)
-        .then(function (response) {            
-        })
-        .catch(function (error) {
-            console.log(error);
-            success = false;
-        });
-
-    return success;
-}
 </script>
+
+<style lang="scss" scoped>
+  hr { 
+    border: 0; 
+    height: 1px; 
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); 
+  }
+</style>
