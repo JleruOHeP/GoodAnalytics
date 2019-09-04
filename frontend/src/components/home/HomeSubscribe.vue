@@ -2,10 +2,13 @@
     <div class="container">
       
       <div class="row" id="subscribe-section">
-        <div class="col-sm-12">
+        <div class="col-sm-9 col-sm-offset-3">
             <div v-if="!successfulSubmission">
                 <p>If you want to know more or to keep  updated about the progress, please subscribe:</p>
-                <input type="email" v-model="mail" placeholder="Add email for subscription"/> <button v-on:click="addEmail">Save!</button>
+                <input type="email" v-model="mail" placeholder="Add email for subscription"/> 
+                <button v-on:click="addEmail">Save!</button>
+
+                <p>Alternatively you can contact us via goodanalyticsau at gmail</p>
             </div>    
             <div v-if="successfulSubmission">
                 <p>Thank you for the subscription! We will be in touch shortly.</p>

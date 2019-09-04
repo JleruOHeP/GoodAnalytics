@@ -4,19 +4,21 @@
 
     <div class="container">
       <div class="row">
-        <h2>Customers distribution</h2>
+        <h2 class="col-sm-offset-3">Customers distribution</h2>
       </div>
     </div>
 
     <div class="container" v-if="!calculated">
       <div class="row">
-        <p>
+        <p class="col-sm-offset-3">
           Imagine, you want to expand your business and hire an additional cashier.
         </p>
-        <p>
+        <p class="col-sm-offset-3">
           But you are not sure if it worth it or not... You have some statistical data about your customers:
         </p>
-        <p>
+      </div>
+      <div>
+        <p class="col-sm-6 col-sm-offset-3">
           <user-form @submitted="onFormSubmitted"/>
         </p>
       </div>
