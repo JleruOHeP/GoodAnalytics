@@ -17,7 +17,7 @@
             develop a model that will give a better answer to a question - "Why".
           </p>
           <p>At the moment this app is still in development.</p>
-          <p>Last update - 4th of September 2019.</p>
+          <p>Last update - 14th of September 2019.</p>
         </div>
       </div>
 
