@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 namespace ProjectCalculator.Models
 {
     public class ConditionElement: IProcessElement
-    {        
-        public void Execute()
+    {
+        public int? NextElementId {get; private set;}
+        public void Execute(StateModel state)
         {
-
-        }
-        public IProcessElement MoveNext()
-        {
-            return null;
+            NextElementId = null;
         }
     }
 }

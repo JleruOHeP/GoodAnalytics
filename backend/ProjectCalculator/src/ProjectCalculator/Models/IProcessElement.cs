@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 namespace ProjectCalculator.Models
 {
     public interface IProcessElement
-    {        
-        void Execute();
-        IProcessElement MoveNext();
+    {
+        int? NextElementId { get; }
+        void Execute(StateModel state);        
     }
 }

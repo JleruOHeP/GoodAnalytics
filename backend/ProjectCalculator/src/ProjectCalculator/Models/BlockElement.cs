@@ -3,17 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using ProjectCalculator.Helpers;
+
 namespace ProjectCalculator.Models
 {
     public class BlockElement: IProcessElement
-    {        
-        public void Execute()
+    {
+        public int? NextElementId {get; private set;}
+        public BlockElement(int? nextElementId, List<string> functions)
         {
+            NextElementId = nextElementId;
 
+            Functions = new List<Action<StateModel>>();
+            foreach (var input in functions)
+            {
+                Functions.Add(BlockElementInitializer.GetAction(input));
+            }
         }
-        public IProcessElement MoveNext()
+
+        private List<Action<StateModel>> Functions;
+
+        public void Execute(StateModel state)
         {
-            return null;
+            foreach (var function in Functions)
+            {
+                function(state);
+            }
         }
     }
 }
