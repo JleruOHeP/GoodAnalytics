@@ -40,6 +40,9 @@ namespace ProjectCalculator.Calculators
                     case ElementType.Block:
                         element = new BlockElement(processModel.NextElementId, processModel.Actions);
                         break;
+                    case ElementType.Condition:
+                        element = new ConditionElement(processModel.Actions);
+                        break;
                 }
 
                 elements[processModel.Id] = element; 
