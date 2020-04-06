@@ -7,6 +7,8 @@ using Xunit;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.TestUtilities;
 
+using ProjectCalculator.Models;
+
 using ProjectCalculator;
 
 namespace ProjectCalculator.Tests
@@ -20,9 +22,22 @@ namespace ProjectCalculator.Tests
             // Invoke the lambda function and confirm the string was upper cased.
             var function = new Function();
             var context = new TestLambdaContext();
-            var upperCase = function.FunctionHandler("hello world", context);
+            var process = new ProcessModel 
+            {
+                FirstElementId = 1,
+                Elements = new List<ElementModel>
+                {
+                    new ElementModel 
+                    {
+                        Id = 1,
+                        ElementType = ElementType.Block,
+                        Actions = new List<string> { "x = 10" }         
+                    }
+                }
+            };
+            var state = function.FunctionHandler(process, context);
 
-            Assert.Equal("HELLO WORLD", upperCase);
+            Assert.Equal(10, state.Variables["x"]);
         }
     }
 }
