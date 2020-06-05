@@ -18,7 +18,7 @@
 
               <div class="row">
                 <div class="col-sm-4 col-sm-offset-4">
-                  <a href="#subscribe-section" class="button primary">Subscribe</a>
+                  <a href="#subscribe-section" class="button primary">I want to know more!</a>
                 </div>
               </div>
             </div>

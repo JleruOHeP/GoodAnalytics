@@ -1,21 +1,30 @@
 <template>  
-    <div class="container">
+    <div class="container" id="subscribe-section">
       
-      <div class="row" id="subscribe-section">
-        <div class="col-sm-9 col-sm-offset-3">
-            <div v-if="!successfulSubmission">
-                <p>If you want to know more or to keep  updated about the progress, please subscribe:</p>
-                <input type="email" v-model="mail" placeholder="Add email for subscription"/> 
-                <button v-on:click="addEmail">Save!</button>
-
-                <p>Alternatively you can contact us via goodanalyticsau at gmail</p>
-            </div>    
-            <div v-if="successfulSubmission">
-                <p>Thank you for the subscription! We will be in touch shortly.</p>
-            </div>
+      <div v-if="!successfulSubmission">
+      <div class="row" >
+        <div class="col-sm-8 col-sm-offset-2" >
+          If you want to know more or to keep  updated about the progress, please subscribe:
         </div>
       </div>
-    
+      <div class="row" >
+        <div class="col-sm-4 col-sm-offset-2">
+          <input type="email" v-model="mail" placeholder="Add email for subscription" style="width:100%;height:100%;"/> 
+        </div>
+        <div class="col-sm-4">
+          <button v-on:click="addEmail">Save!</button>
+        </div>
+      </div>
+      </div>
+      
+      <div v-if="successfulSubmission">
+      <div class="row" >
+        <div class="col-sm-8 col-sm-offset-2" >
+          Thank you for the subscription! We will be in touch shortly.
+        </div>
+      </div>
+      </div>
+      
     </div>    
 </template>
 
