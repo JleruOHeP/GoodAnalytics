@@ -29,8 +29,9 @@
 
 <script>
 
-import { fabric } from 'fabric-browseronly'
+//import { fabric } from 'fabric-browseronly'
 import { lineArrow } from './FabricArrow.js' 
+import { getObjectByCoordinates, getNextId,  getObjectById } from './CanvasHelper.js' 
 
 var ShapesEnum = {"None": 0, "Event": 1, "Process": 2, "Line": 3};
 Object.freeze(ShapesEnum)
@@ -47,6 +48,7 @@ export default {
       addShape(event){
         var pointer = this.canvas.getPointer(event.e);
         
+        var newId = getNextId(this.canvas);
         switch (this.currentShapeType)
         {
           case ShapesEnum.Event:
@@ -56,7 +58,11 @@ export default {
                 fill: 'green',
                 radius: 0,
                 hasRotatingPoint: false,
-                originX: 'center', originY: 'center'
+                originX: 'center', originY: 'center',
+                incomingArrows: [],
+                outgoingArrows: [],
+                shapeType: ShapesEnum.Event,
+                id: newId
             });
             break;
           case ShapesEnum.Process:
@@ -67,7 +73,11 @@ export default {
                 width: 0,
                 height: 0,
                 hasRotatingPoint: false,
-                lockUniScaling: true
+                lockUniScaling: true,
+                incomingArrows: [],
+                outgoingArrows: [],
+                shapeType: ShapesEnum.Process,
+                id: newId
             });
             break;
           case ShapesEnum.Line:
@@ -81,8 +91,23 @@ export default {
               hasBorders: false,
               hasRotatingPoint: false,
               perPixelTargetFind: true,
-              heads: [1, 0]
+              heads: [1, 0],
+              shapeType: ShapesEnum.Line,
+              lockMovementX: true,
+              lockMovementY: true,
+              id: newId
             });
+
+            if (event.target && 
+               (event.target.shapeType === ShapesEnum.Event || event.target.shapeType === ShapesEnum.Process)){
+                  var bound = event.target.getBoundingRect();
+                  let centerX = bound.left + bound.width / 2;
+                  let centerY = bound.top + bound.height / 2;
+                  
+                  this.currentShape.set({ 'x1': centerX, 'y1': centerY });
+                  event.target.outgoingArrows.push(this.currentShape.id);
+                  
+            }
             
             break;
         }
@@ -98,9 +123,28 @@ export default {
           return;
         }
 
+        if (this.currentShapeType === ShapesEnum.Line) {
+          var pointer = this.canvas.getPointer(event.e);
+          var endShape = getObjectByCoordinates(this.canvas, pointer.x, pointer.y);
+
+          if (endShape &&
+             (endShape.shapeType === ShapesEnum.Event || endShape.shapeType === ShapesEnum.Process)){
+            var bound = endShape.getBoundingRect();
+            var centerX = bound.left + bound.width / 2;
+            var centerY = bound.top + bound.height / 2;
+
+            endShape.incomingArrows.push(this.currentShape.id);
+                        
+            this.currentShape.set({ 'x2': centerX, 'y2': centerY });
+            this.currentShape.setCoords();
+          }
+        }
+
         this.canvas.setActiveObject(this.currentShape);
         this.currentShape = null;
         this.canvas.renderAll();
+
+        this.setShape(ShapesEnum.None);
       },
 
       resizeShape(event){
@@ -129,10 +173,44 @@ export default {
         this.canvas.renderAll();
       },
 
+      updateArrows(event) {
+        var p = event.target;
+
+        var bound = p.getBoundingRect();
+        var centerX = bound.left + bound.width / 2;
+        var centerY = bound.top + bound.height / 2;
+
+
+        if (p.outgoingArrows) {
+            for (var i = 0; i < p.outgoingArrows.length; i++) {
+                var line = getObjectById(this.canvas, p.outgoingArrows[i]);
+                line.set({ 'x1': centerX, 'y1': centerY});
+                line.setCoords();
+            }
+        }
+
+        if (p.incomingArrows) {
+            for (var i = 0; i < p.incomingArrows.length; i++) {
+                var line = getObjectById(this.canvas, p.incomingArrows[i]);
+                line.set({ 'x2': centerX, 'y2': centerY });
+                line.setCoords();
+            }
+        }
+
+        this.canvas.renderAll();
+      },
+
       setShape (shapeType){
           this.currentShapeType = shapeType;
 
-          this.canvas.selection = shapeType === 0;
+          let draggable = shapeType === 0;
+          this.canvas.selection = draggable;
+          this.canvas.forEachObject(function (obj) {
+              if (obj.shapeType !== ShapesEnum.Line) {
+                  obj.lockMovementX = !draggable;
+                  obj.lockMovementY = !draggable;
+              }
+          });
       },
 
       processKeyboard (e) {
@@ -163,6 +241,7 @@ export default {
       this.canvas.on('mouse:down', this.addShape);
       this.canvas.on('mouse:up', this.finishShape);
       this.canvas.on('mouse:move', this.resizeShape);
+      this.canvas.on('object:moving', this.updateArrows);
   }
 };
 

@@ -94,7 +94,7 @@
             </p>
             
             <p>At the moment this app is still in development. Using top navigation menu you can find a couple of interactive examples.</p>
-            <p>Last update - 5th of June 2020.</p>
+            <p>Last update - 12 of June 2020.</p>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 // Extended fabric line class
-import { fabric } from 'fabric-browseronly'
+//import { fabric } from 'fabric-browseronly'
 
 var lineArrow = fabric.util.createClass(fabric.Line, {
 
