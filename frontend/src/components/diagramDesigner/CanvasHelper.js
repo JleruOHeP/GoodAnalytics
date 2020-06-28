@@ -41,5 +41,63 @@ var getObjectById = function (canvas, id) {
     return object;
 };
 
+var calculateY = function (y, canvas) {
+    var rect = canvas.getBoundingClientRect();
+    return y - rect.top;
+};
 
-export {getObjectByCoordinates, getNextId,  getObjectById}
+var calculateX = function (y, canvas) {
+    var rect = canvas.getBoundingClientRect();
+    return y - rect.left;
+};
+
+var deleteLineConnections = function (canvas, lineId) {
+    canvas.forEachObject(function (obj) {
+        if (obj.lineStarts) {
+            var index = obj.lineStarts.indexOf(lineId);
+            if (index > -1) {
+                obj.lineStarts.splice(index, 1);
+            }
+        }
+
+        if (obj.lineEnds) {
+            var index = obj.lineEnds.indexOf(lineId);
+            if (index > -1) {
+                obj.lineEnds.splice(index, 1);
+            }
+        }
+    });
+};
+
+var refreshConnectingLines = function(canvas, element){
+    var bound = element.getBoundingRect();
+    var centerX = bound.left + bound.width / 2;
+    var centerY = bound.top + bound.height / 2;
+
+
+    if (element.lineStarts) {
+        for (var i = 0; i < element.lineStarts.length; i++) {
+            var line = getObjectById(canvas, element.lineStarts[i]);
+            line.set({ 'x1': centerX, 'y1': centerY });
+            line.setCoords();
+        }
+    }
+
+    if (element.lineEnds) {
+        for (var i = 0; i < element.lineEnds.length; i++) {
+            var line = getObjectById(canvas, element.lineEnds[i]);
+            line.set({ 'x2': centerX, 'y2': centerY });
+            line.setCoords();
+        }
+    }
+};
+
+var refreshAllLines = function (canvas) {
+    canvas.forEachObject(function (obj) {
+        if (obj.lineStarts || obj.lineEnds) {
+            refreshConnectingLines(canvas, obj);
+        }
+    });
+};
+
+export {getObjectByCoordinates, getNextId,  getObjectById, calculateX, calculateY, deleteLineConnections, refreshConnectingLines, refreshAllLines}

@@ -18,7 +18,7 @@ namespace Build
         //1 - cd into frontend folder
         //2 - run `npm run build`
         //3 - cd into dist
-        //4 - run `aws s3 cp . s3://good-analytics --recursive --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers`
+        //4 - run `aws s3 cp . s3://good-analytics.org --recursive --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers`
 
         Target BuildFrontend  => _ => _
             .Executes(() => 
