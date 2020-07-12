@@ -5,17 +5,17 @@ using System.Threading.Tasks;
 
 namespace ProjectCalculator.Models
 {
-    public class ProcessModel
+    public class InputProcessModel
     {
-        public List<ElementModel> Elements {get; set;}
-        public int FirstElementId {get; set;}
+        public List<InputElementModel> Elements {get; set;}
     }
 
-    public class ElementModel
+    public class InputElementModel
     {
         public int Id {get; set;}
         public ElementType ElementType {get; set;}
-        public int? NextElementId {get; set;} // only for blocks!
+        public List<int> NextElementIds {get; set;}
+        public List<int> PreviousElementIds {get; set;}
         public List<string> Actions {get; set;}
     }
 }

@@ -19,7 +19,7 @@ namespace ProjectCalculator.Tests
                 "5 > y : 2",
                 "rubbish:3"
             };
-            var element = new ConditionElement(input);
+            var element = new ConditionElement(null, input);
 
             var state = new StateModel {
                 Variables = new Dictionary<string, decimal> { 
@@ -30,54 +30,22 @@ namespace ProjectCalculator.Tests
             
             //first check - no state - rubbish should fire as a default route
             element.Execute(state);            
-            Assert.Equal(3, element.NextElementId);
+            Assert.Contains(3, element.NextElementIds);
 
             //second check - no conditions met from state - rubbish should fire as a default route
             state.Variables["y"] = 10; 
             element.Execute(state);            
-            Assert.Equal(3, element.NextElementId);
+            Assert.Contains(3, element.NextElementIds);
 
             //third check - second condition from state is true
             state.Variables["y"] = 2; 
             element.Execute(state);            
-            Assert.Equal(2, element.NextElementId);
+            Assert.Contains(2, element.NextElementIds);
 
             //fourth check - first condition from state is true
             state.Variables["x"] = 1; 
             element.Execute(state);            
-            Assert.Equal(1, element.NextElementId);
-        }
-
-        [Fact]
-        public void InitializationForCertainProbabilityTest()
-        {
-            var input = new List<string> {
-                "101%:1"
-            };
-            var element = new ConditionElement(input);
-
-            var state = new StateModel {
-                Variables = new Dictionary<string, decimal> { }
-            };
-                        
-            element.Execute(state);            
-            Assert.Equal(1, element.NextElementId);
-        }
-
-        [Fact]
-        public void InitializationForImpossibleProbabilityTest()
-        {
-            var input = new List<string> {
-                "0%:1"
-            };
-            var element = new ConditionElement(input);
-
-            var state = new StateModel {
-                Variables = new Dictionary<string, decimal> { }
-            };
-                        
-            element.Execute(state);            
-            Assert.Null(element.NextElementId);
+            Assert.Contains(1, element.NextElementIds);
         }
     }
 }

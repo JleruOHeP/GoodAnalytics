@@ -9,10 +9,14 @@ namespace ProjectCalculator.Models
 {
     public class BlockElement: IProcessElement
     {
-        public int? NextElementId {get; private set;}
-        public BlockElement(int? nextElementId, List<string> functions)
+        public List<int> NextElementIds { get; private set; }
+        public List<int> PreviousElementIds { get; private set; }
+        public bool IsExecuted { get; set; }
+
+        public BlockElement(List<int> previousElementIds, List<int> nextElementIds, List<string> functions)
         {
-            NextElementId = nextElementId;
+            NextElementIds = nextElementIds != null ? new List<int>(nextElementIds) : new List<int>();
+            PreviousElementIds = previousElementIds != null ? new List<int>(previousElementIds) : new List<int>();
 
             Functions = new List<Action<StateModel>>();
             foreach (var input in functions)
@@ -29,6 +33,7 @@ namespace ProjectCalculator.Models
             {
                 function(state);
             }
+            IsExecuted = true;
         }
     }
 }

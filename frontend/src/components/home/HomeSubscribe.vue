@@ -4,7 +4,7 @@
       <div v-if="!successfulSubmission">
       <div class="row" >
         <div class="col-sm-8 col-sm-offset-2" >
-          If you want to know more or to keep  updated about the progress, please subscribe:
+          If you want to know more or to get updates about the app, please subscribe:
         </div>
       </div>
       <div class="row" >

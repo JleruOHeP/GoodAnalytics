@@ -22,7 +22,7 @@ namespace ProjectCalculator
         /// <param name="input"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public StateModel FunctionHandler(ProcessModel input, ILambdaContext context)
+        public StateModel FunctionHandler(InputProcessModel input, ILambdaContext context)
         {
             var calculator = new ProcessCalculator();
             var finalState = calculator.Calculate(input);

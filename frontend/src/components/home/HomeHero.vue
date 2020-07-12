@@ -6,7 +6,7 @@
             <div class="background-fill hero-content">
               <div class="row">
                 <div class="col-sm-4 col-sm-offset-4">
-                  <img src="https://s3-ap-southeast-2.amazonaws.com/good-analytics/assets/1.png" />
+                  <img src="https://s3-ap-southeast-2.amazonaws.com/good-analytics.org/assets/1.png" />
                 </div>
               </div>
 
@@ -16,11 +16,11 @@
                 </div>
               </div>
 
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-sm-4 col-sm-offset-4">
                   <a href="#subscribe-section" class="button primary">I want to know more!</a>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
       </div>

@@ -4,28 +4,51 @@
     <div class="container">
 
       <div class="row">
-        <h3 class="col-sm-offset-2">Hello!</h3>
+        <h3 class="col-sm-offset-2">Business optimization!</h3>
       </div>
 
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
-          <p>First of all - <b>thank you</b> very much for visiting this site!</p>
-          
           <p>
             Business analysis from the mathematical point of view always fascinated me. I like to think that a properly defined model is needed for any business. And if you can throw statistical data into this model - it will do wonders!
           </p>
 
           <p>
-            You are a small business owner and you have a model in mind. But there are a number of variables that can affect the performance of the business. It is really hard to hold everything in your head. I want to help you to run simulations over various input parameters to find the optimal setup for your business. Combine internal properties of processes so the profit is maximized.
+            You are a small business owner and you have a model in mind. But there is a number of variables that can affect the performance of the business. It is really hard to hold everything in your head. I want to help you to run simulations over various input parameters to find the optimal setup for your business. Combine internal properties of processes so the profit is maximized.
           </p>
 
           <p>
             You can save the historical performance of the business and compare the current state with the desired optimal one. And find the best way to correct the actual model towards this optimized model!
           </p>
+        </div>
+      </div>
 
+      <div class="row">
+        <h3 class="col-sm-offset-2">What do I offer?</h3>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
           <p>
-            Whenever you need to make an important business decision there is a certain level of uncertainty. Now you can make decisions based on data instead of hunches.
+            I offer consultancy services with a strong technical background. For simplicity, lets split my approach into 3 stages:
           </p>
+
+          <ol>
+            <li>
+              <h5>Explore</h5>
+              <p>Interview with the business owner - to get some initial data. It is not necessarily the best data, but we can use it as a starting point.</p>
+            </li>
+            <li>
+              <h6>Analyse</h6>
+              <p>Then I will build a business model and run the simulation to get the answer based on initial data</p>
+              <p>Business owners will get access to a custom website where they will be able to capture additional statistical data about their business performance and see the model working.</p>
+            </li>
+            <li>
+              <h6>Implement</h6>
+              <p>Finally, based on the model outputs business owners might try to optimize their business. Or gather extra data to have a better solution. Or even rethink the initial question! I can help with business audits and provide some extra suggestions in regards business processes.</p>
+              <p>And if needed - we can repeat from the begining to make business even better!</p>
+            </li>
+          </ol>
         </div>
       </div>
 
@@ -36,7 +59,10 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">            
-            <h4>A couple of examples where this service can be helpful:</h4>
+            <h4>So, what kind of business can benefit from our services?</h4>
+            <p>
+              Short answer - any! A couple of examples:
+            </p>
         </div>
       </div>
       <div class="row">
@@ -54,7 +80,7 @@
             </p>
         </div>
         <div class="col-sm-4">
-            <img src="https://s3-ap-southeast-2.amazonaws.com/good-analytics/assets/new-hire.jpg" />
+            <img src="https://s3-ap-southeast-2.amazonaws.com/good-analytics.org/assets/new-hire.jpg" />
             <p class="photo-sub-text">Photo by Andrea Piacquadio from Pexels</p>
         </div>
       </div>
@@ -65,7 +91,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-4 col-sm-offset-2">
-            <img src="https://s3-ap-southeast-2.amazonaws.com/good-analytics/assets/fish-chips-2.jpg" />
+            <img src="https://s3-ap-southeast-2.amazonaws.com/good-analytics.org/assets/fish-chips-2.jpg" />
             <p class="photo-sub-text">Photo by Adrien Olichon from Pexels</p>
         </div>
         <div class="col-sm-4">
@@ -90,11 +116,12 @@
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
             <p>
-              This site is going to help to accumulate some statistics about your business and based on it develop a model that will give a better answer to a question - "Why".
+              Whenever you need to make an important business decision there is a certain level of uncertainty. Now you can make decisions based on data instead of hunches.
             </p>
             
-            <p>At the moment this app is still in development. Using top navigation menu you can find a couple of interactive examples.</p>
-            <p>Last update - 12 of June 2020.</p>
+            <p>
+              At the moment this app is still in development. Using top navigation menu you can find a couple of interactive examples.
+            </p>
         </div>
       </div>
     </div>

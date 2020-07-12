@@ -7,35 +7,34 @@ using ProjectCalculator.Helpers;
 
 namespace ProjectCalculator.Models
 {
-    public class ConditionElement: IProcessElement
+    public class EventElement: IProcessElement
     {
         public List<int> NextElementIds {get; private set;}
         public List<int> PreviousElementIds { get; private set; }
         public bool IsExecuted { get; set; }
 
-        public ConditionElement(List<int> previousElementIds, List<string> functions)
+        public EventElement(List<int> previousElementIds, List<int> nextElementIds, List<string> functions)
         {
-            NextElementIds = new List<int>();
+            NextElementIds = nextElementIds != null ? new List<int>(nextElementIds) : new List<int>();
             PreviousElementIds = previousElementIds != null ? new List<int>(previousElementIds) : new List<int>();
 
-            Conditions = new List<Func<StateModel, int?>>();
+            Probabilities = new List<Func<bool>>();
             foreach (var input in functions)
             {
-                Conditions.Add(ConditionElementInitializer.GetDecisions(input));
+                Probabilities.Add(EventElementInitializer.GetProbability(input));
             }
         }
 
-        private List<Func<StateModel, int?>> Conditions;
+        private List<Func<bool>> Probabilities;
 
         public void Execute(StateModel state)
         {
-            foreach (var conditionCheck in Conditions)
+            foreach (var probabilityCheck in Probabilities)
             {
-                var possibleNextElementId = conditionCheck(state);
-                if (possibleNextElementId != null){
-                    NextElementIds.Add(possibleNextElementId.Value);
+                if (!probabilityCheck()){
+                    NextElementIds.Clear();
                     break;
-                }                    
+                }
             }
             IsExecuted = true;
         }

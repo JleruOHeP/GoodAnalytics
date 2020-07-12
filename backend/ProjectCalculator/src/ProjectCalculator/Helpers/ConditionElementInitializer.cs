@@ -10,7 +10,7 @@ namespace ProjectCalculator.Helpers
     public static class ConditionElementInitializer
     {
         //Expects input string in a format of "Condition:IdOfNextNode"
-        //Condition can be a state check logical condition or a probability percentage
+        //Condition can be a state check logical condition
         public static Func<StateModel, int?> GetDecisions(string inputEquation)
         {
             var cleanInput = inputEquation.Replace(" ", ""); // no spaces
@@ -33,11 +33,7 @@ namespace ProjectCalculator.Helpers
         
         private static Func<StateModel, bool> ParseCondition(string input)
         {
-            if (input.Contains("%"))
-            {
-                return ParseProbability(input);
-            }
-            else if (input.Contains(">"))
+            if (input.Contains(">"))
             {
                 return ParseGreaterCheck(input);
             }
@@ -55,22 +51,7 @@ namespace ProjectCalculator.Helpers
                 return (StateModel state) => true;
             }
         }
-
-        private static Func<StateModel, bool> ParseProbability(string input)
-        {
-            return (StateModel state) => 
-            {
-                int probabilityPercentage;
-                if (!int.TryParse(input.Replace("%", ""), out probabilityPercentage))
-                    probabilityPercentage = 0;                
-
-                var random = new Random();
-                int randomValue = random.Next(0, 100);
-
-                return probabilityPercentage >= randomValue;
-            };
-        }
-
+        
         private static Func<StateModel, bool> ParseGreaterCheck(string input)
         {
             return (StateModel state) => 

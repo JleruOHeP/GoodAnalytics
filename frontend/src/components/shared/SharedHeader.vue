@@ -1,6 +1,6 @@
 <template>
     <header class="sticky">
-      <a href="#" class="logo"><img src="https://s3-ap-southeast-2.amazonaws.com/good-analytics/assets/2.png" /></a>
+      <a href="#" class="logo"><img src="https://s3-ap-southeast-2.amazonaws.com/good-analytics.org/assets/2.png" /></a>
       <a href="/" class="button">Home</a>
       <a href="#chart" class="button" v-on:click="onNavigate('chart')">Api Demo</a>
       <a href="#diagram" class="button" v-on:click="onNavigate('diagram')">Diagram Demo</a>

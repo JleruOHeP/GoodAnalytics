@@ -7,7 +7,9 @@ namespace ProjectCalculator.Models
 {
     public interface IProcessElement
     {
-        int? NextElementId { get; }
-        void Execute(StateModel state);        
+        List<int> PreviousElementIds { get; }
+        List<int> NextElementIds { get; }
+        void Execute(StateModel state);
+        bool IsExecuted { get; set; }
     }
 }

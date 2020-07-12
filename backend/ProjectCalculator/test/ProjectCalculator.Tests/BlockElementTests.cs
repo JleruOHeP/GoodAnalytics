@@ -25,7 +25,7 @@ namespace ProjectCalculator.Tests
 
                 "a = b + 10"
             };
-            var element = new BlockElement(0, input);
+            var element = new BlockElement(null, null, input);
 
             var state = new StateModel {
                 Variables = new Dictionary<string, decimal> {
