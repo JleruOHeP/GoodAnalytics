@@ -4,7 +4,7 @@ var EventDrawer = function (canvas){
     var initialX = 0;
     var initialY = 0;
 
-    this.start = function (x, y) {
+    this.start = function (x, y, id) {
         currentCircle = new fabric.Event({
             left: x,
             top: y,
@@ -12,6 +12,9 @@ var EventDrawer = function (canvas){
 
             hasRotatingPoint: false,
             originX: 'center', originY: 'center',
+
+            id: id,
+            
             lineStarts: [],
             lineEnds: [],
 

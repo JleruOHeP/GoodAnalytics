@@ -3,14 +3,7 @@ import { lineArrow } from './FabricClasses.js'
 var LineDrawer = function (canvas) {
     var currentLine;
 
-    this.start = function (x, y, target) {
-        var currentId = 1;
-        canvas.forEachObject(function (obj) {
-            if (obj.id && obj.id >= currentId) {
-                currentId = obj.id + 1;
-            }
-        });
-        
+    this.start = function (x, y, id, target) {
         currentLine = new fabric.LineArrow([x, y, x, y],
         {
             strokeWidth: 5,
@@ -24,7 +17,7 @@ var LineDrawer = function (canvas) {
             heads: [1, 0],
             lockMovementX: true,
             lockMovementY: true,
-            id: currentId
+            id: id
         });
 
         canvas.add(currentLine);
@@ -36,6 +29,7 @@ var LineDrawer = function (canvas) {
             var centerX = bound.left + bound.width / 2;
             var centerY = bound.top + bound.height / 2;
 
+            currentLine.fromId = target.id;
             currentLine.set({ 'x1': centerX, 'y1': centerY });
         }
     };
@@ -62,6 +56,7 @@ var LineDrawer = function (canvas) {
                 var centerY = bound.top + bound.height / 2;
 
                 currentLine.set({ 'x2': centerX, 'y2': centerY });
+                currentLine.toId = target.id;
             }
             currentLine.setCoords();
         } else {

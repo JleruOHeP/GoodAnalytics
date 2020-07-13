@@ -51,6 +51,52 @@ var calculateX = function (y, canvas) {
     return y - rect.left;
 };
 
+var updateEventProperties = function(newElement, obj){
+    newElement.ElementType = 2;
+    newElement.Actions = [ obj.probability + '%' ];
+};
+var updateProcessProperties = function(newElement, obj){
+    newElement.ElementType = 0;
+    newElement.Actions = [];
+    for (let i = 0; i < obj.actions.length; i++) {
+        newElement.Actions.push(obj.actions[i].text);
+    }
+};
+var getProcessModel = function(canvas) {
+    var model = {};
+    model.Elements = [];
+    const elementInitializers = {
+        process: updateProcessProperties,
+        event: updateEventProperties
+    };
+    canvas.forEachObject(function (obj) {
+        if (obj.type === 'lineArrow')
+            return;
+        
+        let newElement = {};
+        newElement.Id = obj.id;
+        elementInitializers[obj.type](newElement, obj);
+        if (obj.lineEnds){
+            newElement.PreviousElementIds = [];
+            for (let i = 0; i < obj.lineEnds.length; i++) {
+                let line = getObjectById(canvas, obj.lineEnds[i]);
+                newElement.PreviousElementIds.push(line.fromId);
+            }
+        }
+        if (obj.lineStarts){
+            newElement.NextElementIds = [];
+            for (let i = 0; i < obj.lineStarts.length; i++) {
+                let line = getObjectById(canvas, obj.lineStarts[i]);
+                newElement.NextElementIds.push(line.toId);
+            }
+        }
+        
+        model.Elements.push(newElement);
+    });
+
+    return model;
+};
+
 var deleteLineConnections = function (canvas, lineId) {
     canvas.forEachObject(function (obj) {
         if (obj.lineStarts) {
@@ -100,4 +146,4 @@ var refreshAllLines = function (canvas) {
     });
 };
 
-export {getObjectByCoordinates, getNextId,  getObjectById, calculateX, calculateY, deleteLineConnections, refreshConnectingLines, refreshAllLines}
+export {getObjectByCoordinates, getNextId,  getObjectById, calculateX, calculateY, deleteLineConnections, refreshConnectingLines, refreshAllLines, getProcessModel}

@@ -6,6 +6,8 @@
     </div>
     <div class="row">
       <div class="col-sm-1 col-sm-offset-1">
+          <button type="button" @click="calculateModel()">Calculate</button>
+          <br/>
           <button type="button" @click="saveFile()">Save</button>
           <br/>
           <label class="button">
@@ -66,7 +68,7 @@
 <script>
 
 import { initCustomClasses } from './FabricClasses.js' 
-import { getObjectByCoordinates, getNextId,  getObjectById, calculateX, calculateY, deleteLineConnections, refreshConnectingLines, refreshAllLines } from './CanvasHelper.js' 
+import { getObjectByCoordinates, getNextId,  getObjectById, calculateX, calculateY, deleteLineConnections, refreshConnectingLines, refreshAllLines, getProcessModel } from './CanvasHelper.js' 
 import { EventDrawer } from './EventDrawer.js'
 import { ProcessDrawer } from './ProcessDrawer.js'
 import { LineDrawer } from './LineDrawer.js'
@@ -102,7 +104,7 @@ export default {
         if (selectedGroup) {
 
             selectedGroup.forEachObject(function (o) {
-                if (o.type === "whiteboardLine") {
+                if (o.type === "lineArrow") {
                     deleteLineConnections(vueApp.canvas, o.id);
                 }
                 
@@ -121,7 +123,8 @@ export default {
           if (drawer) {
             let y = calculateY(options.e.clientY, options.e.target);
             let x = calculateX(options.e.clientX, options.e.target);
-            drawer.start(x, y, options.target);
+            let nextId = getNextId(this.canvas);
+            drawer.start(x, y, nextId, options.target);
           }
       },
       canvasMouseMove: function(options) {
@@ -177,6 +180,11 @@ export default {
             // 46 is Delete key
             deleteShape();
           }
+      },
+
+      calculateModel(){
+        let model = getProcessModel(this.canvas);
+        this.$emit('submitted', model);
       },
 
       clearCanvas(){

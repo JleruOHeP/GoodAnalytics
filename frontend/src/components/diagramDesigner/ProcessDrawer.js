@@ -3,7 +3,7 @@ var ProcessDrawer = function(canvas) {
     var initialX = 0;
     var initialY = 0;
 
-    this.start = function (x, y) {
+    this.start = function (x, y, id) {
         currentRect = new fabric.Process({
             left: x,
             top: y,
@@ -11,6 +11,8 @@ var ProcessDrawer = function(canvas) {
             height: 0,
 
             fill: 'red',
+
+            id: id,
 
             hasRotatingPoint: false,
             lockUniScaling: true,

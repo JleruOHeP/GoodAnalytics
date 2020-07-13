@@ -10,6 +10,8 @@ var initCustomClasses = function() {
         this.callSuper('initialize', points, options);
         this.set('id', options.id || '');
         this.set('heads', options.heads || [1, 0]);
+        this.set('toId', options.toId);
+        this.set('fromId', options.fromId);
 
         this.hasControls = false;
 
@@ -20,7 +22,9 @@ var initCustomClasses = function() {
       toObject: function() {
         return fabric.util.object.extend(this.callSuper('toObject'), {
           id: this.get('id'),
-          heads: this.get('heads')
+          heads: this.get('heads'),
+          toId: this.get('toId'),
+          fromId: this.get('fromId')
         });
       },
     
