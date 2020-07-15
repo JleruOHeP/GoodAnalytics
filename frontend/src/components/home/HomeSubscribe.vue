@@ -57,11 +57,13 @@ function validateEmail(email) {
 };
 
 function postToApi(email) {
-    var baseUrl = 'https://yobcnyc7ja.execute-api.ap-southeast-2.amazonaws.com/default/expressionOfInterest';
-    var query = baseUrl + '?mail=' + email;
+    var url = 'https://api.good-analytics.org/contactushandler';
 
     var success = true;
-    axios.post(query)
+    axios.post(
+          url,
+          '"' + email + '"'
+        )
         .then(function (response) {            
         })
         .catch(function (error) {
