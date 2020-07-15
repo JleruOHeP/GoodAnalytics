@@ -2,11 +2,13 @@ import Home from '../components/home/Home.vue';
 import NotFound from '../components/NotFound.vue';
 import CustomerSpread from '../components/customerSpread/CustomerSpread.vue';
 import DiagramDesigner from '../components/diagramDesigner/DiagramDesigner.vue';
+import ContactUs from '../components/contactUs/ContactUs.vue';
 
 const routes = {
     '': Home,
     'chart': CustomerSpread,
-    'diagram': DiagramDesigner
+    'diagram': DiagramDesigner,
+    'contactus': ContactUs
   };
 
 const routing = {

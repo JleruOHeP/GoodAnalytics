@@ -53,7 +53,7 @@
             With this graph you can easier see if there are any potential queues that might turn away new customers or the opposite and your existing service is throttling.
           </p>
           <p>
-            <button type="button" @click="resetForm">Reset</button>
+            <button type="button" class="primary" @click="resetForm">Reset</button>
           </p>
         </div>
       </div>

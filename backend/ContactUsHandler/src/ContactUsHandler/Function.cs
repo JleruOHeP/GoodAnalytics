@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 
 using ContactUsHandler.Services;
+using ContactUsHandler.Models;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.LambdaJsonSerializer))]
@@ -21,7 +22,7 @@ namespace ContactUsHandler
         /// <param name="input"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public async Task<bool> FunctionHandler(string input, ILambdaContext context)
+        public async Task<bool> FunctionHandler(UserMessageModel input, ILambdaContext context)
         {
             var customerService = new CustomerService();
             var result = await customerService.SaveCustomer(input);

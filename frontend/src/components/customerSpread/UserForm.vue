@@ -24,7 +24,7 @@
       </div>
 
       <div class="input-group fluid">
-        <button type="button" v-on:click="onSubmit">Submit</button>
+        <button type="button" class="primary" v-on:click="onSubmit">Submit</button>
       </div>
     </fieldset>
   </form>

@@ -6,7 +6,7 @@
     </div>
     <div class="row">
       <div class="col-sm-1 col-sm-offset-1">
-          <button type="button" @click="calculateModel()">Calculate</button>
+          <button type="button" class="primary" @click="calculateModel()">Calculate</button>
           <br/>
           <button type="button" @click="saveFile()">Save</button>
           <br/>

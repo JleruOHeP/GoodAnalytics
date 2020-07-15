@@ -5,8 +5,6 @@
     <shared-header />
 
     <home-content />
-
-    <home-subscribe />
   </div>
 </template>
 
@@ -14,7 +12,6 @@
 
 import SharedHeader from '../shared/SharedHeader.vue'
 import HomeContent from './HomeContent.vue'
-import HomeSubscribe from './HomeSubscribe.vue'
 import HomeHero from './HomeHero.vue'
 
 export default {
@@ -22,7 +19,6 @@ export default {
   components: {
     SharedHeader,
     HomeContent,
-    HomeSubscribe,
     HomeHero
   }
 };

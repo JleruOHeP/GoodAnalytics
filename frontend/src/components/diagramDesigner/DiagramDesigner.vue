@@ -16,7 +16,7 @@
               {{name}} : {{ value }}
             </li>
           </ul>
-          <button type="button" @click="resetForm">Reset</button>
+          <button type="button" class="primary" @click="resetForm">Reset</button>
         </div>
       </div>
     </div>
