@@ -13,16 +13,12 @@ namespace ContactUsHandler.Tests
 {
     public class FunctionTest
     {
-        [Fact]
-        public void TestToUpperFunction()
-        {
+        //Need to write some tests, but this function is simple call to captcha service and
+        //save to dynamodb
 
-            // Invoke the lambda function and confirm the string was upper cased.
-            var function = new Function();
-            var context = new TestLambdaContext();
-            var upperCase = function.FunctionHandler("hello world", context);
+        //all the tests will be full mock and verify that mocks are called
+        //which is stupid
 
-            Assert.Equal("HELLO WORLD", upperCase);
-        }
+        //leaving this file for future usage - if there will be some logic added
     }
 }

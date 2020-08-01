@@ -36,7 +36,7 @@ namespace CustomerSpreadCalculator.Tests
                         
             var totalCustomersPerDay = customersForMonth.Select(spread => spread.Sum());
 
-            Assert.True(Math.Abs(1.87 - totalCustomersPerDay.Average()) < 0.1);
+            Assert.True(Math.Abs(13 - totalCustomersPerDay.Average()) < 0.5);
         }
 
         [Fact]
@@ -62,8 +62,7 @@ namespace CustomerSpreadCalculator.Tests
                         
             var totalCustomersPerDay = customersForMonth.Select(spread => spread.Sum());
 
-            //~27.5 current actual
-            Assert.Equal(1, totalCustomersPerDay.Average());
+            Assert.True(Math.Abs(50 - totalCustomersPerDay.Average()) < 1);
         }
 
         [Fact]
