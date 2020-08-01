@@ -1,0 +1,24 @@
+name: .NET Core
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+
+    - name: Build Project Calculator
+      run: dotnet build ./backend/ProjectCalculator/src/ProjectCalculator/
+    - name: Test Project Calculator
+      run: dotnet test ./backend/ProjectCalculator/test/ProjectCalculator.Tests/
