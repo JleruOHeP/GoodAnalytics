@@ -17,3 +17,13 @@ jobs:
       run: dotnet build ./backend/ProjectCalculator/src/ProjectCalculator/
     - name: Test Project Calculator
       run: dotnet test ./backend/ProjectCalculator/test/ProjectCalculator.Tests/
+
+    - name: Build Customer Spread
+      run: dotnet build ./backend/CustomerSpreadCalculator/src/
+    - name: Test Customer Spread
+      run: dotnet test ./backend/CustomerSpreadCalculator/test/CustomerSpreadCalculator.Tests/
+  
+    - name: Build Contact Us Handler
+      run: dotnet build ./backend/ContactUsHandler/src/ContactUsHandler/
+    - name: Test Contact Us Handler
+      run: dotnet test ./backend/ContactUsHandler/test/ContactUsHandler.Tests/
