@@ -10,7 +10,7 @@
 
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
-          <p>Want to get in touch? I'd love to hear from you. You can reach me using the form below, or if you prefer just a straight email - send it to <a href="mailto:goodanalyticsau@gmail.com">goodanalyticsau@gmail.com</a></p>
+          <p>Want to get in touch? I'd love to hear from you. You can reach me using the form below, or if you prefer just a straight email - send it to <a href="mailto:goodanalyticsau@gmail.com">goodanalyticsau@gmail.com</a> (sorry for @google email...)</p>
         </div>
       </div>
 
@@ -46,12 +46,6 @@
           <p>
             Thank you for the message! I will be in touch shortly.
           </p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-          And if you want to support me - you can <a target="_blank" href="https://www.buymeacoffee.com/mkoptelov">buy me a coffee</a>
         </div>
       </div>
 

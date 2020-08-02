@@ -1,8 +1,10 @@
 <template>  
   <div>
+    <shared-header />
+    
     <home-hero />
     
-    <shared-header />
+    
 
     <home-content />
   </div>

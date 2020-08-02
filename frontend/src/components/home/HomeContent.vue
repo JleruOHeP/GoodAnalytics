@@ -1,11 +1,53 @@
 <template>
   <div>
 
-    <div class="container">
-
+    <div class="container" style="text-align: center;">
       <div class="row">
-        <h3 class="col-sm-offset-2">Business optimization!</h3>
+        <div class="col-sm-2 col-sm-offset-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-candle" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z"/>
+            <rect x="4" y="6" width="4" height="5" rx="1" />
+            <line x1="6" y1="4" x2="6" y2="6" />
+            <line x1="6" y1="11" x2="6" y2="20" />
+            <rect x="10" y="14" width="4" height="5" rx="1" />
+            <line x1="12" y1="4" x2="12" y2="14" />
+            <line x1="12" y1="19" x2="12" y2="20" />
+            <rect x="16" y="5" width="4" height="6" rx="1" />
+            <line x1="18" y1="4" x2="18" y2="5" />
+            <line x1="18" y1="11" x2="18" y2="20" />
+          </svg>
+        </div>
+        <div class="col-sm-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-flask" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z"/>
+            <line x1="9" y1="3" x2="15" y2="3" />
+            <line x1="10" y1="9" x2="14" y2="9" />
+            <path d="M10 3v6l-4 11a.7 .7 0 0 0 .5 1h11a.7 .7 0 0 0 .5 -1l-4 -11v-6" />
+          </svg>
+        </div>
+        <div class="col-sm-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clipboard-check" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z"/>
+            <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
+            <rect x="9" y="3" width="6" height="4" rx="2" />
+            <path d="M9 14l2 2l4 -4" />
+          </svg>
+        </div>
       </div>
+      <div class="row">
+        <div class="col-sm-2 col-sm-offset-2">
+          <h3>Explore</h3>
+        </div>
+        <div class="col-sm-3">
+          <h3>Analyse</h3>
+        </div>
+        <div class="col-sm-2">
+          <h3>Implement</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
 
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
@@ -39,12 +81,12 @@
               <p>Interview with the business owner - to get some initial data. It is not necessarily the best data, but we can use it as a starting point.</p>
             </li>
             <li>
-              <h6>Analyse</h6>
+              <h5>Analyse</h5>
               <p>Then I will build a business model and run the simulation to get the answer based on initial data</p>
               <p>Business owners will get access to a custom website where they will be able to capture additional statistical data about their business performance and see the model working.</p>
             </li>
             <li>
-              <h6>Implement</h6>
+              <h5>Implement</h5>
               <p>Finally, based on the model outputs business owners might try to optimize their business. Or gather extra data to have a better solution. Or even rethink the initial question! I can help with business audits and provide some extra suggestions in regards business processes.</p>
               <p>And if needed - we can repeat from the begining to make business even better!</p>
             </li>
